@@ -4,12 +4,7 @@ import { useSelector } from "react-redux";
 export const SinglePostPage = ({ match }) => {
     const postId = match.params.postId;
 
-    const post = useSelector(state => state.posts.find((post) => {
-        console.log('our use selector post ', post)
-        console.log('our post ID ', post.id)
-        console.log('our ID from postId ', postId)
-        return post.id === postId
-    }))
+    const post = useSelector(state => state.posts.find((post) => post.id === postId))
     console.log('our match', postId)
     console.log('our post for comparison', post)
     if (!post) {
