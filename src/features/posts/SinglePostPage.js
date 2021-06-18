@@ -2,15 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { PostAuthor } from "./PostAuthor";
-import {TimeAgo} from "./TimeAgo";
+import { TimeAgo } from "./TimeAgo";
+import { ReactionButtons } from "./ReactionButtons";
 
 export const SinglePostPage = ({ match }) => {
     const postId = match.params.postId;
 
     const post = useSelector(state => state.posts.find((post) => post.id === postId))
-    console.log('our post ', post)
-    console.log('our match', postId)
-    console.log('our post id for comparison', post.id)
+
     if (!post) {
         return (
             <section>
@@ -22,13 +21,18 @@ export const SinglePostPage = ({ match }) => {
     return (
         <section>
             <article className={'post'}>
-                <h2>{post.title}</h2>
+                <h2>
+                    {post.title}
+                </h2>
                 <PostAuthor userId={post.user} />
                 <TimeAgo timestamp={post.date} />
-                <p className={'post-content'}>{post.content}</p>
+                <p className={'post-content'}>
+                    {post.content}
+                </p>
                 <Link to={`/editPost/${post.id}`} className={'button'}>
                     Edit Post.
                 </Link>
+                <ReactionButtons post={post} />
             </article>
         </section>
     )
