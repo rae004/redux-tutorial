@@ -49,11 +49,12 @@ const postsSlice = createSlice({
       }
     },
     postUpdated(state, action) {
-      const {id, title, content} = action.payload
+      const {id, title, content, date} = action.payload
       const postExists = state.find( post => post.id === id)
       if (postExists) {
         postExists.title = title
         postExists.content = content
+        postExists.date = date
       }
     }
   }
