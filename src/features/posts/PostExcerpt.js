@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { ReactionButtons } from "./ReactionButtons";
 
 export const PostExcerpt = post => {
-    console.log('Our post in excerpt ', post)
     return  (
         <article className={'post-excerpt'} key={post.post.id}>
             <h3>
