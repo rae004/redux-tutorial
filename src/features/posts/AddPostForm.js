@@ -10,8 +10,6 @@ export const AddPostForm = () => {
     const dispatch = useDispatch()
 
     const users = useSelector(state => state.users);
-    console.log('users in add post ', users);
-
     const onTitleChange = e => setTitle(e.target.value);
     const onContentChange = e => setContent(e.target.value);
     const onUserIdChange = e => setUserId(e.target.value);

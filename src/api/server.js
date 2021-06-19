@@ -62,10 +62,19 @@ const notificationTemplates = [
   'sent you a gift',
 ]
 
+/**
+ * Return Random int between @param min, max
+ * @param min
+ * @param max
+ * @returns {number}
+ */
+const random_ms = (min, max) => Math.floor(
+    Math.random() * (max - min) + min
+);
 new Server({
   routes() {
     this.namespace = 'fakeApi'
-    //this.timing = 2000
+    this.timing = random_ms(75,750)
 
     this.resource('users')
     this.resource('posts')
