@@ -62,7 +62,7 @@ export const AddPostForm = () => {
                     value={content}
                     onChange={onContentChange}
                 />
-                <button type={'button'} onClick={onSavePostClicked} disabled={!canSave}>Save Post</button>
+                <button type={'button'} onClick={onSavePostClicked} className={'button'} disabled={!canSave}>Save Post</button>
             </form>
         </section>
     )
