@@ -168,7 +168,7 @@ new Server({
       },
 
       afterCreate(user, server) {
-        server.createList('post', 3, { user })
+        server.createList('post', 6, { user })
       },
     }),
     post: Factory.extend({
@@ -218,6 +218,6 @@ new Server({
     comment: IdSerializer,
   },
   seeds(server) {
-    server.createList('user', 3)
+    server.createList('user', 6)
   },
 })
