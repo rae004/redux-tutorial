@@ -24,14 +24,14 @@ function App() {
             render={() => (
               <section>
                 <React.Fragment>
-                    <AddPostForm />
                     <PostList />
                 </React.Fragment>
               </section>
             )}
           />
-          <Route exact path="/posts/:postId" component={SinglePostPage} />
-          <Route exact path="/editPost/:postId" component={EditPostForm} />
+            <Route exact path="/posts/:postId" component={SinglePostPage} />
+            <Route exact path="/editPost/:postId" component={EditPostForm} />
+            <Route exact path={'/new-post'} component={AddPostForm} />
           <Redirect to="/" />
         </Switch>
       </div>
