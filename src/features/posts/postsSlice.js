@@ -30,6 +30,12 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   return response.posts
 })
 
+export const addNewPost = createAsyncThunk('posts/addNewPost', async initialPost => {
+  const response = await client.post('/fakeApi/posts', { post: initialPost })
+  console.log('our add new post response ', response);
+  return response.post
+})
+
 /**
  *
  * @type {Slice<[{date: string, reactions: {rocket: number, hooray: number, thumbsUp: number, eyes: number, heart: number}, id: string, title: string, user: string, content: string}, {date: string, reactions: {rocket: number, hooray: number, thumbsUp: number, eyes: number, heart: number}, id: string, title: string, user: string, content: string}], {reactionAdded(*, *): void, postUpdated(*, *): void, postAdded: {prepare(*, *, *=): {payload: {date: string, reactions: {rocket: number, hooray: number, thumbsUp: number, eyes: number, heart: number}, id: string, title: any, user: any, content: any}}, reducer(*, *): void}}, string>}
@@ -84,7 +90,10 @@ const postsSlice = createSlice({
     [fetchPosts.rejected]: (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
-    }
+    },
+    [addNewPost.fulfilled]: (state, action) => {
+      state.posts.push(action.payload)
+    },
   }
 })
 
