@@ -7,9 +7,8 @@ import { selectAllPosts } from "../posts/postsSlice";
 
 export const UserPage = ({ match }) => {
     const { userId } = match.params
-    console.log(userId)
     const user = useSelector(state => selectUserById(state, userId))
-    console.log(user)
+
     const postForUser = useSelector(state => {
         const allPosts = selectAllPosts(state)
         return allPosts.filter(post => post.user === userId)
