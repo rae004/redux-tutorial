@@ -1,17 +1,18 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { client } from "../../api/client";
 
 export const fetchNotifications = createAsyncThunk(
     'notifications/fetchNotifications',
-    async () => {
+    async (_, { getState }) => {
         const allNotifications = selectAllNotifications(getState())
         const [ latestNotification ] = allNotifications
         const latestTimestamp = latestNotification ? latestNotification.date : ''
-        const respnse = await client.get(
+        const response = await client.get(
             `/fakeApi/notifications?since=${latestTimestamp}`
         )
-        return respnse.notifications
+
+        return response.notifications
     }
 )
 
