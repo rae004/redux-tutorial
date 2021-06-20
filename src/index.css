@@ -62,6 +62,7 @@ nav a:hover {
 
 .navLinks {
   display: flex;
+  align-items: center;
 }
 
 .navLinks a {
